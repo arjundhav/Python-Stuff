@@ -8,4 +8,4 @@
     <li><b> Basic Python Projects & Mini-projects </b></li>
  
   <h3> To view Jupyter Nootebook </h3>
-    <a href="https://nbviewer.jupyter.org/">Just Paste the Notebook Link here </a>
+    <a href="https://nbviewer.jupyter.org/">Click here</a> & Just Paste the JpyNotebook url
