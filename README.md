@@ -1,6 +1,6 @@
 # Python-stuff
 
-<h2 style="color:red;"> Contents </h2>
+<h2> Contents </h2>
 <ul>
     <li> <b> Python Basics (Programming Fundamentals) </b></li>
     <li> <b> Data Structures using Python </b></li>
