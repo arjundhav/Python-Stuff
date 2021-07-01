@@ -7,5 +7,5 @@
     <li> <b> Data Science Fundamentals </b></li>
     <li><b> Basic Python Projects & Mini-projects </b></li>
  
-  <h3> To view Jupyter Nootebook </h3>
-    <a href="https://nbviewer.jupyter.org/">Click here</a> & Just Paste the JpyNotebook url
+ <h3 style="color:"red";> To view Jupyter Nootebook </h3>
+   <b> <a href="https://nbviewer.jupyter.org/">Click here</a> & Just Paste the JpyNotebook url </b>
