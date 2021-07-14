@@ -1,7 +1,7 @@
 #List is ordered sequence of objects.Its denoted in [].
        #Ex: [1,2,3,4,5,6],['a','b','c',TRUE]
 
-list = [ 'khiladi', 786 , 2.23, 'kunal', 70.2 ] 
+list = [ 'prasanna', 786 , 2.23, 'kunal', 70.2 ] 
 tinylist = [123, 'arjun'] 
 print (list)          # Prints complete list 
 print (list[0])       # Prints first element of the list 
