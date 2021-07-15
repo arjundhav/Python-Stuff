@@ -2,10 +2,12 @@
 <li>Why Python?
 Python is very beginner-friendly. The syntax (words and structure) is extremely simple to read and follow, most of which can be understood even if you do not know any programming
 
--Readable
--Dynamic
--Fast
--Poweful
+<ol>
+  -Readable
+  -Dynamic
+  -Fast
+  -Powerful
+ </ol>  
 </li>
 
 <li>What is Python
