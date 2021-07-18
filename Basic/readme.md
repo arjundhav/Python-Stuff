@@ -1,4 +1,4 @@
-    <h1>Comprehensive Python Cheatsheet</h1>
+ <code> <h1>Comprehensive Python Cheatsheet</h1> </code>
 =============================================
 
 Contents
