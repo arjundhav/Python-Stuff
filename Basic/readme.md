@@ -1,5 +1,4 @@
- <code> <h2>Python Cheatsheet</h2> <hr> </code>
-
+ <code> <h1>Python Cheatsheet</h1> <hr> </code>
 
 Contents
 --------
