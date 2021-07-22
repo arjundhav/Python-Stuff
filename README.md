@@ -8,4 +8,4 @@
     <li><b> Basic Python Projects & Mini-projects (Using Tkinter & various Libs) </b></li>
  
  <h3> To view Jupyter Notebook </h3>
-   <b> <a href="https://nbviewer.jupyter.org/">Click here</a> & Just Paste the JpyNotebook url </b>
+   <b> <a href="https://nbviewer.jupyter.org/">Click here</a> & Just Paste the JupiterNotebook url </b>
