@@ -3,8 +3,6 @@ Directory: ls/dir- ls in Linux and dir in Win
 CurrentDir:  i) pwd/cd- pwd linux and cd in Win
             ii) But in linux,cd Desktop will take u to that dir
            iii) cd .. will take you one directory Back
-           iV) cd ~ -> ls will take you to user directory
-           v) cd/desktop/test -> ls -> open .  will open test folder on desktop
 
 MakeDir: mkdir fname -> ls  this will create folder with fname 
 
