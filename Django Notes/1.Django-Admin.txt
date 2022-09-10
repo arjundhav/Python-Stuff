@@ -1,0 +1,57 @@
+Django:
+
+Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. 
+Built by experienced developers, it takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel.
+It’s free and open source.
+
+Ridiculously fast:
+Django was designed to help developers take applications from concept to completion as quickly as possible.
+
+Secure:
+Django takes security seriously and helps developers avoid many common security mistakes.
+
+>>django-admin startproject projectname //creating projectfile
+
+>>python manage.py runserver
+ u will get IP go nd visit that 127.0.0.1:8000
+
+>>python manage.py migrate
+
+>>python manage.py createsuperuser
+>>Name
+>>email
+>>pass:
+>>cpass:
+>>y
+127.0.0.1:8000/admin                /*You will get dashboard of admin*/
+
+ProjectName/
+    manage.py
+    ProjectName/
+        __init__.py
+        settings.py
+        urls.py
+        asgi.py
+        wsgi.py
+
+>>python manage.py startapp appname  //create app
+ 
+Appname/
+    __init__.py
+    admin.py
+    apps.py
+    migrations/
+        __init__.py
+    models.py
+    tests.py
+    views.py    //contains business logic what we want to implement
+
+
+>>python manage.py migrate  //this is used to sync our settings
+project ka url.py -> App ka urls.py
+
+if we request /index/ it will firstcheck in project url.py 
+if present then request will be sent to apps url.py as it has index path rule
+ i.e it has index then go to views.py and execute the code. 
+
+
