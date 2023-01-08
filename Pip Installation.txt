@@ -69,4 +69,4 @@ To downgrade PIP, use the syntax:
 
 For example, to downgrade to version 18.1, you would run:
 
-    command:           python -m pip install pip==18.1
+    command:     python -m pip install pip==18.1
