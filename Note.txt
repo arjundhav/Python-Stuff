@@ -1,0 +1,26 @@
+## Code introspection in Python
+Introspection is an ability to determine the type of an object at runtime. Everything in python is an object. Every object in Python may have attributes and methods. By using introspection, we can dynamically examine python objects.
+Code Introspection is used for examining the classes, methods, objects, modules, keywords and get information about them so that we can utilize it.
+
+Methods for Code Introspection
+type()  - This function returns the type of an object.
+
+str()   - This function converts everything into a string 
+
+dir()   - This function return list of methods and attributes associated with that object.
+
+help()  - It is used it to find what other functions do
+
+repr()  - Return string representation of object.
+
+sys()   - Give access to system specific variables, functions
+
+__doc__ - Return some documentation about an object
+
+__name_ - Return the name of the object.
+
+
+##Dunder Methods 
+
+Dunder methods are methods that allow instances of a class to interact with the built-in functions and operators of the language. 
+ex:  __init__ ,  __add__ ,  __len__ ,  __repr__ etc.
