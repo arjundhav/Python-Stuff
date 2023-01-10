@@ -1,0 +1,5 @@
+#pickle & unpickle are import concepts
+EmpID = {1:"Zack",2:"53050",3:"IT",4:"38",5:"Flipkart"}
+#"wb" mode opens the file in binary format for writing
+#"rb" mode opens the file in binary format for reading
+
