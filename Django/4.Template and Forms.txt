@@ -3,4 +3,4 @@ The HTML consists of both static as well as dynamic parts of the content. You ca
 It is also fine to have none of them.
 
 Django has its own template system called the Django template language (DTL). 
-Regardless of the backend, you can also load and render templates using Django’s standard admin.
+Regardless of the backend,you can also load and render templates using Django’s standard admin.
