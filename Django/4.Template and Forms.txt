@@ -13,3 +13,40 @@ Variables are surrounded by {{ and }} like this:
 With a context of {'first_name': 'John', 'last_name': 'Doe'}, this template renders to:
 
        My first name is John. My last name is Doe
+
+
+ Tags:
+    
+    Tags provide arbitrary logic in the rendering process.
+
+    Tags are surrounded by {% and %} like this:
+
+        {% csrf_token %}
+
+    Most tags accept arguments:
+
+        {% cycle 'odd' 'even' %}
+
+    Some tags require beginning and ending tags:
+
+         {% if user.is_authenticated %}Hello, {{ user.username }}.{% endif %}
+
+ Filters:
+
+    Filters transform the values of variables and tag arguments.
+    They look like this:
+
+                {{ django|title }}
+
+    With a context of {'django': 'the web framework for perfectionists with deadlines'}, this template renders to:
+    
+            The Web Framework For Perfectionists With Deadlines
+
+    Some filters take an argument:
+
+            {{ my_date|date:"Y-m-d" }}
+
+
+
+
+       
