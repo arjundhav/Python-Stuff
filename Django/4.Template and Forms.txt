@@ -1,0 +1,6 @@
+Django’s template layer renders the information to be presented to the user in a designer-friendly format. Using templates, you can generate HTML dynamically. 
+The HTML consists of both static as well as dynamic parts of the content. You can have any number of templates depending on the requirement of your project. 
+It is also fine to have none of them.
+
+Django has its own template system called the Django template language (DTL). 
+Regardless of the backend, you can also load and render templates using Django’s standard admin.
