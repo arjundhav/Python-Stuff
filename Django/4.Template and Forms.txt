@@ -5,23 +5,28 @@ It is also fine to have none of them.
 Django has its own template system called the Django template language (DTL). 
 Regardless of the backend,you can also load and render templates using Django’s standard admin.
 
-A variable outputs a value from the context, which is a dict-like object mapping keys to values.
-Variables are surrounded by {{ and }} like this:
+    A variable outputs a value from the context, which is a dict-like object mapping keys to values.
+    Variables are surrounded by {{ and }} like this:
 
        My first name is {{ first_name }}. My last name is {{ last_name }}.
 
-With a context of {'first_name': 'John', 'last_name': 'Doe'}, this template renders to:
+    With a context of {'first_name': 'John', 'last_name': 'Doe'}, this template renders to:
 
        My first name is John. My last name is Doe
 
 
- Tags:
+Tags:
     
     Tags provide arbitrary logic in the rendering process.
 
     Tags are surrounded by {% and %} like this:
 
-        {% csrf_token %}
+        {% csrf_token %}: 
+
+               Django has a {% csrf_token %} tag that is implemented to avoid malicious attacks. 
+               It generates a token on the server-side when rendering the page and makes sure to cross-check this token for any requests coming back in. 
+               If the incoming requests do not contain the token, they are not executed.
+               With this simple addition, CSRF attacks can be avoided, thereby ensuring the security of post requests from a user to the server.
 
     Most tags accept arguments:
 
@@ -31,7 +36,8 @@ With a context of {'first_name': 'John', 'last_name': 'Doe'}, this template rend
 
          {% if user.is_authenticated %}Hello, {{ user.username }}.{% endif %}
 
- Filters:
+
+Filters:
 
     Filters transform the values of variables and tag arguments.
     They look like this:
