@@ -1,0 +1,607 @@
+Django:
+      DJANGO uses MVT Architecture i.e
+       i)Model: The goal of the Models is to handle the data(realated to DBMS)
+                    Each model class maps to a single table in the database.
+
+       ii)View: First, it is responsible for getting the inputs that come via HTTP request. 
+                    Secondly,it is a place where we put our business logic of the application. 
+                    It's a python function which is used to perform some business logic and return a response to the user. 
+                    This response can be the HTML contents of a Web page, or a redirect, or a 404 error.
+
+      iii)Template: Django provides a convenient way to generate dynamic HTML pages by using its template system.
+                          A template consists of static parts of the desired HTML output as well as some special syntax describing how dynamic content will be inserted.
+
+
+  One of the most powerful features of Django is its Object-Relational Mapper (ORM), which enables you to interact with your database, like you would with SQL. 
+  In fact, Django's ORM is just a pythonical way to create SQL to query and manipulate your database and get results in a pythonic fashion.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step 1: Creating Project(Demo),
+       >> mkvirtualenv my_django_environment  //making virtualenv
+
+       >>django-admin startproject projectname      //creating projectfile
+
+       >>python manage.py startapp products  //creates an app
+
+      >>python manage.py migrate   //to sync settings 
+
+      >>python manage.py createsuperuser   //creates admin user 
+
+      >>Name
+      >>email
+      >>pass:
+      >>cpass:
+      >>y
+       
+      >>python manage.py runserver
+      127.0.0.1:8000/admin                /*You will get dashboard of admin*/
+
+Step 2: In settings.py add 'products' app in Installed aPPS AND 
+        Manually Create urls.py in Apps Root(products)
+
+Step 3: Next step is to create DB models,so we will do these in models.py
+        Here :
+         class Product(models.Model):
+            title = models.CharField(max_length=120) #models.Field is used to map these to database
+            description =models.TextField(blank=True,null=True)
+            price =models.DecimalField(decimal_places=2,max_digits=500)
+            summary=models.TextField() 
+       
+       IMP: For every change in models.py,don't forget to make migrations and then migrate it
+            
+             >>python manage.py makemigrations
+            
+             >>python manage.py migrate
+
+Step 4: Next step is to strictly register models in admin.py
+        Here:
+              from .models import Product
+            
+              admin.site.register(Product)   
+
+        then run server and checker whether the model is created in admin app.
+
+Step5: Now if we want to create product object in Python Shell(Its a Django API to interact with Database)
+      >>python manage.py python shell
+
+        So now we are in Python Shell:
+            >>>from products.models import Product        //this is done to import all models of App 
+            >>>Products.objects.all()        //shows list of objects created
+         
+         //To create the object follow bellow command 
+            >>>p=Product.objects.create(title='Product1', description='New Product', price='200',summary='Thats Sweet')
+            >>>q.save() //to save the change in DB
+            >>>q.id  //gives id of object
+ 
+            >>>Product.objects.create(title='Product2', description='New Product2', price='100',summary='Thats Sweet')
+            >>>Product.objects.create(title='Product3', description='New Product3', price='300',summary='Thats Sweet') 
+ 
+          //So to exit from shell just cmommand
+            >>>exit()
+ 
+      >>python manage.py runserver  //and check whether objects are created in admin app
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+****************** To change Default HomePage(http://127.0.0.1:8000/  ) to Custom Homepage **********************************
+
+Step1: For that create a new app Pages and then open views.py of Pages App
+       
+ Note: views.py is place that handles various webpages this done using python fuctions or classes.
+       and dont foget to import : 
+        eg:
+           from django.http import HttpResponse
+              def home_view(request,*args,**args):
+                 return HttpResponse("<h1>Hello World</h1>") //Html String
+
+Step2: Next step is to map these with Project urls.py and import views
+ 
+          /*from pages import views                  
+           from products import views */
+       //Its bit confuse 
+                  OR
+         /* from pages.views import home_view       //Just import a view we want use
+             urlpatterns=[
+               path('',home_view,name='home'),
+               path('admin/',admin.site.urls),
+             ]
+         */
+   Now Runserver, we will get desired Custom Page at http://127.0.0.1:8000/
+      
+   And we if we do
+           /*
+               urlpatterns=[
+               path('home/',home_view,name='home'),
+               path('admin/',admin.site.urls),
+             ]
+           */
+        then we get custome page at http://127.0.0.1:8000/home/
+
+----------------------------------------------------------------------------------------
+
+
+************************ Templates and Django ******************************************
+#Create templates folder in Project Root folder and create home.html file
+      and then in settings.py in templates  
+  TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'], #add BASE DIR path along with templates
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+ ]    
+
+
+
+       from django.shortcuts import render 
+       from django.http import HttpResponse
+        
+       def home_view(request,*args,**args):
+           return render(request,"home.html",{})
+
+--------------------------------------------------------------------------------------
+
+
+************************** Django Templating Engine ****************************************
+templates/home.html
+ 
+        <h1>Hello World</h1>
+          {{ request.user }}  //This is Jinja Template Syntax
+        <p>You are in Home</p>
+
+Now add index.html in Project root that holds all the html files
+
+index.html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Try Django</title>
+  </head>
+  <body>
+    <h1> This is Base Index Page </h1>
+    {% block content %}
+        Its Index Page
+    {% endblock %}
+  </body>
+</html>
+
+home.html:
+  {% extends 'index.html' %}   //This relates(inherites) index.html and home.html
+  {% block content %}
+   <h1>Hello World</h1>
+
+   <p>You are in Contact Page</p>
+   {% endblock %}
+
+
+-------------------------------------------------------------------------------------------------
+
+
+**************Include Template Tag****************
+#Create a navbar.html:
+
+<ul>
+  <li>Home</li>
+  <li>Contact</li>
+  <li>About us</li>
+</ul>
+
+index.html:
+
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <title>Try Django</title>
+   </head>
+   <body>
+     
+     {% include 'navbar.html'%}    <!--This done to import external template-->
+
+     {% block content %}
+         Its Index Page
+     {% endblock %}
+   </body>
+ </html>
+
+
+All the content is navbar is reflected where ever the index is inherited
+
+
+----------------------------------------------------------------------------------------
+
+
+********** Rendering Context in Template ***********
+Django takes our template & template context,mashes then 
+it renders and sends raw HTML to browser
+
+{{ }} it represents context variable
+
+
+In views.py:
+ 
+ def about_view(request,*args, **kargs):
+     context={
+         "text":"This is About us",
+         "id":7020
+     }
+     return render(request,'about.html',context)
+
+
+In about.html:
+ {% extends 'index.html' %}
+{% block content %}
+<h1>Hello World</h1>
+<p>You are in About us Page</p>
+
+<p>
+    {{ text }}, {{ id }}
+</p>
+{% endblock %}
+
+
+O/P: 
+     Hello World
+
+ You are in About us Page
+
+ This is About us, 7020 
+
+--------------------------------------------------------------------------------------------
+
+
+**********For Loop in Template ***********
+What if we want to view a list 
+
+ def about_view(request,*args, **kargs):
+     context={
+         "list"=[123,456,789]
+     }
+     return render(request,'about.html',context)
+
+and in html:
+     {{ list }}
+
+O/P: [123,456,789]
+
+But we want show this as html list items,so we can use forloop in template as below:
+about.html:
+
+{% extends 'index.html' %}
+{% block content %}
+<h1>Hello World</h1>
+<p>You are in About us Page</p>
+
+<p>
+    {{ text }}, {{ id }}
+</p>
+
+<ul>
+{% for item in list %}
+   <li>{{ forloop.counter }} - {{ item }} </li>
+{% endfor %}   
+</ul>
+
+{% endblock %}
+
+
+------------------------------------------------------------------------------------------------
+
+
+*********** Using Conditions in Template************
+<ul>
+ {% for abc in list %}
+  {% if abc == 123 %}
+     <li>{{ forloop.counter }} - {{ abc|add:22 }} </li>
+  {% elif abc == "Arjun" %}
+     <li> Myself Arjun </li>
+  {% else %}
+     <li> {{ forloop.counter }} - {{ abc }} </li>
+  {% endif %}
+ {% endfor %}
+</ul>
+
+-----------------------------------------------------------------------
+
+
+******************** Template Tags and Filters   ****************************
+
+Do visit: https://docs.djangoproject.com/en/3.2/ref/templates/builtins/
+
+Ex:
+
+Open views.py:
+
+def about_view(request,*args, **kargs):
+    context={
+        "title":"This is About us",
+        "id":7020,
+        "list":[123,"Kunal","Arjun",264]
+        "html":"<h1> Hello HTML </h1>"
+    }
+    return render(request,'about.html',context)
+
+
+Open About.html and pass:
+             
+                  {{ html }}          //it gives the string as it is
+ 
+but if we use filter: {{ html|safe}}  //it gives O/P as HTML string
+ 
+                    
+-------------------------------------------------------------------------------------
+
+
+ 
+ *********** Render Data From Database with a Model *******************************                    
+Run: python manage.py shell
+
+Now,we are in shell:
+    
+ >>>from products.models import Product    //first step is to import models from app
+                       
+ >>>Product.objects.get(id=1) //will give object with id=1
+    <Product: Product object(1)> //to get exact object use __str__ function in models
+
+//also we can store command in variable so that we can use them for our ease
+ >>>obj=Product.objects.set('title')
+ >>>obj.id
+ >>>obj.save()  
+
+ >>>exit()   //we will exit from shell
+
+
+---------------------------------------------------------------------------------------------------
+
+
+******************  Django Model Forms   ***************
+step1:Create a file "forms.py" in your app folder
+
+Step2:open forms.py:
+          
+         from django import form
+         from .models import Product
+   
+         class Productform(forms.ModelForm):
+           classMeta:
+                model=Products
+                fields=[
+                         'title',
+                         'description',
+                         'price'        
+                ]
+step3:Now open views.py and import:
+      
+       from .forms import ProductForm
+       
+     def product_create_view(request):           //to get form data
+         form=Productform(request.POST or None)
+         if form.is_valid():
+            form.save()
+            form=Productform()      //it will reset form field as we click submit
+         context={
+             'form':form 
+         }
+         
+         return render(request,"product/product_create.html")
+
+Step4: Then create 'product_create.html' to store html of form:
+       open product_create.html:
+       {% extends 'index.html' %}
+       {% block content %}
+            <form method="POST">
+                {% csrf_token %}       //to provide security form malcious inputs
+                {{ form.as_p }}
+              <input type="submit" value="Save">
+           </form>
+       {% endblock %}
+
+Step5:Give its path to projects urls.py:
+          import product_create_view
+
+   and then in url patterns=[ path('create',product_create_view), ]
+
+
+--------------------------------------------------------------------------------------------------
+
+
+**************************   Pure Django Form         ***************************
+step1: For this we have to create a sample of form by creating class in forms.py
+   
+ class RawProductForm(forms.Form):
+      title      =forms.CharField()
+      description=forms.CharField()
+      price      =forms.DecimalField() 
+
+Do refer: https://docs.djangoproject.com/en/3.2/ref/forms/fields/
+
+step2:Open views.py:
+         from .forms import RawProductForm
+
+         def product_create_view(request.POST): 
+             my_form=RawProductForm()                              
+             context = {
+                     "form": my_form
+             }
+
+             return render(request, "product/product_create.html",context)
+
+step3:Open product_create.html:
+          
+      {% extends 'index.html' %} 
+      {% block content %}
+      <form action="." method="POST">         //'.' means period
+        {% csrf_token %} 
+        {{ form.as_p }}                   //display form as paragraph also try form.as_ul
+      <input type="submit" value="Save" />
+      </form>
+
+      {% endblock %}
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+******************************    Form Widgets  ************************************************
+This changes will give intial values to fields:
+forms.py:
+
+class RawProductForm(forms.Form):
+      title      =forms.CharField( label='Product Name', widget=forms.TextInput(attrs={"placeholder":"Enter Product"})) 
+      description=forms.CharField(required=False,
+                                  widget=forms.Textarea(
+                                         attrs={
+                                        "placeholder":"Enter Description",
+                                              "class":"my_class",
+                                               "id"  :"my_id",
+                                               "rows":20,
+                                               "cols":120
+                                         }
+                                      )
+                                  )
+      price      =forms.DecimalField(initial=199.99) 
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+**************************   Form Vailidation     ******************************************************************************
+
+Suppose we want to add validation for Title then we will add new function cleaned_<fieldName> in our real Product form.
+forms.py:
+
+class ProductForm(forms.ModelForm):
+    title = forms.CharField(label='Product Name', widget=forms.TextInput(
+        attrs={"placeholder": "Enter Product"}))
+
+    description = forms.CharField(required=False,
+                                  widget=forms.Textarea(
+                                      attrs={
+                                          "placeholder": "Enter Description",
+                                          "class": "my_class",
+                                          "id": "my_id",
+                                          "rows": 10,
+                                          "cols": 50
+                                      }
+                                  )
+                                  )
+    price = forms.DecimalField(initial=99.99)
+
+    class Meta:
+        model = Product
+        fields = [
+            'title',
+            'description',
+            'price'
+        ]
+//validation for title
+    def clean_title(self, *args, **kargs):
+        title=self.cleaned_data.get("title")
+        if not title.startswith("Product"):
+            raise forms.ValidationError("Enter Valid Product")
+        return title
+
+
+
+--------------------------------------------------------------------------------------------------
+
+
+*********************   Dynamic URL Routing       **********************************************************************
+
+
+step1: Create view in views.py:
+        
+    def dynamic_lookup_view(request, my_id):
+     obj = Product.objects.get(id=my_id)
+     context = {
+         "object": obj
+     }
+     return render(request, "product/detail.html", context)
+
+step2: Include path of view to urls.py of project dir
+    
+      urls.py:
+                from products.views import dynamic_lookup_view
+            
+                 urlpatterns=[
+                
+                   path('products/<int:id>',dynamic_lookup_view)
+                 ] 
+
+
+and try:  http://127.0.0.1:8000/products/1/    should give object1
+          http://127.0.0.1:8000/products/2/    should give object2
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+*************************     Handle DoesNotExist Error      *******************************
+step1: if we tried to access object that does not exist,it will give error as
+       "DoesNotExist at/products/14/" this error is not so standard.
+
+step2: from django.shortcuts import get_object_or_404   //for handling does not exist error
+      
+        def dynamic_lookup_view(request, my_id):
+            object= get_object_or_404(Product, id=my_id)
+            context = {
+                "obj": object
+            }
+            return render(request, "product/detail.html", context)
+
+  After making this changes,if we tried to access object that does not exist,it will give error as
+       "Page not Found" which is standard error message
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+***************************   View of a List of DB objects ***********************************************
+Step1:
+
+   Lets create a view in views.py:
+       
+             def product_list_view(request):
+                    queryset = Product.objects.all()   #list of objects
+                    context = {
+                          'object_list':queryset
+                    } 
+                    return render(request, 'product/product_list.html', context)     
+
+Step 2: Create product_list.html:
+
+                     {% block content %} 
+                              {% for i in object_list %}
+
+                                    <p> {{ i.id }} - {{ i.title }} </p>
+
+                            {% endfor%} 
+                        {% endblock %}
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+****************************   Dynamic Linking URL   ************************************
+
+step1: In models.py of products define a new            function in our model Class
+          
+              def get_absolute_url(self):
+                   return f'/products/{self.id}'
+
+step2:
+             {% for i in object_list %}
+
+                                    <p> {{ i.id }} - <a href="{{ i.get_absolute_url }}">{{ i.title }} </a> </p>
+
+                            {% endfor%} 
+
+
