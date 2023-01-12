@@ -1,1 +1,4 @@
-<a href="https://learn.snyk.io/lessons/csrf-attack/javascript/#:~:text=What%20is%20CSRF%3F,pizza%20to%20an%20attacker%27s%20address!">To get more view about CSRF, click here</a>
+<a href="https://learn.snyk.io/lessons/csrf-attack/javascript/#:~:text=What%20is%20CSRF%3F,pizza%20to%20an%20attacker%27s%20address!">
+  A CSRF anti-forgery or request verification tokens is a random and unique token for use in HTTP requests. These tokens are a shared secret between the client and server-side of an application. The server validates the token on each request to ensure it’s still the authorized user making the request. The token is usually contained in a hidden field of an HTML form.
+  
+ To get more view about CSRF, click here</a>
