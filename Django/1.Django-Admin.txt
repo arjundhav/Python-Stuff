@@ -16,6 +16,8 @@ Django takes security seriously and helps developers avoid many common security 
 >>python manage.py runserver
  u will get IP go nd visit that 127.0.0.1:8000
 
+>>python manage.py makemigrations
+
 >>python manage.py migrate
 
 >>python manage.py createsuperuser
