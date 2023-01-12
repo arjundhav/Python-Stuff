@@ -1,7 +1,8 @@
 Django:
 
 Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. 
-Built by experienced developers, it takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel.
+Django apps make use of very less code,allows quick development of websites.
+It follows the DRY ( Don’t Repeat Yourself ) Principle which means, one concept or a piece of data should live in just one place
 It’s free and open source.
 
 Ridiculously fast:
