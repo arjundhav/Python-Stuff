@@ -1,5 +1,5 @@
 Step 1: Creating Project(Demo),
-       >> mkvirtualenv my_django_environment  //making virtualenv
+
        >>django-admin startproject projectname      //creating projectfile
 
        >>python manage.py runserver

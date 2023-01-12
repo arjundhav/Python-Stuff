@@ -1,19 +1,22 @@
-Django:
-
 Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. 
-Built by experienced developers, it takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel.
+Django apps make use of very less code,allows quick development of websites.
+It follows the DRY ( Don’t Repeat Yourself ) Principle which means, one concept or a piece of data should live in just one place
 It’s free and open source.
 
-Ridiculously fast:
-Django was designed to help developers take applications from concept to completion as quickly as possible.
+Ridiculously fast: Django was designed to help developers take applications from concept to completion as quickly as possible.
 
-Secure:
-Django takes security seriously and helps developers avoid many common security mistakes.
+Secure: Django takes security seriously and helps developers avoid many common security mistakes.
+
+DB support: Built-in support for most of popular databases.
+
+
 
 >>django-admin startproject projectname //creating projectfile
 
 >>python manage.py runserver
  u will get IP go nd visit that 127.0.0.1:8000
+
+>>python manage.py makemigrations
 
 >>python manage.py migrate
 
@@ -54,4 +57,5 @@ if we request /index/ it will firstcheck in project url.py
 if present then request will be sent to apps url.py as it has index path rule
  i.e it has index then go to views.py and execute the code. 
 
+<a href="https://www.javatpoint.com/django-and-bootstrap">Click here, to know how to add bootstrap to Django project<a> 
 
