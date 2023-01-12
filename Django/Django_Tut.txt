@@ -373,7 +373,7 @@ Step2:open forms.py:
          from .models import Product
    
          class Productform(forms.ModelForm):
-           classMeta:
+           classMeta:                         #used to change the behavior of your model fields like changing order options,verbose_name, and a lot of other options
                 model=Products
                 fields=[
                          'title',
