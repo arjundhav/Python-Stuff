@@ -63,7 +63,7 @@ Step 4: Next step is to strictly register models in admin.py
         then run server and checker whether the model is created in admin app.
 
 Step5: Now if we want to create product object in Python Shell(Its a Django API to interact with Database)
-      >>python manage.py python shell
+      >>python manage.py shell
 
         So now we are in Python Shell:
             >>>from products.models import Product        //this is done to import all models of App 
