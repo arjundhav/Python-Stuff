@@ -1,0 +1,6 @@
+POST is method in which browser bundles up form data,encodes it for transmission, sends it to the server, and then receives back its response.
+
+GET, by contrast, bundles the submitted data into a string, and uses this to compose a URL. 
+The URL contains the address where the data must be sent, as well as the data keys and values
+
+PUT(Patch) updates the data by inserting
