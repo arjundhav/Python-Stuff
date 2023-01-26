@@ -5,6 +5,7 @@
 ### Working:
 
    <img src="https://secumantra.com/wp-content/uploads/2020/06/csrf-token-1.png">
+   
     When user requests a page from server & when server responds, it has a token in hidden field in the form and it also has a token in response header via a cookie.
  
     Now when form is submitted,token in hidden form field & token in form cookie is also sent along. We know that any cookie set against the domain name is automatically sent, 
