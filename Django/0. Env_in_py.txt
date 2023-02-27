@@ -14,7 +14,7 @@ Step 1: If not installed install it by typing a command on terminal.
 
 Step 2: Create a virtual environment. 
 
->>>python3 -m venv env
+>>>py -m venv env
 
 Step 3: To Activate Enviroment
 >>>cd env
