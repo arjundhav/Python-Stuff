@@ -11,7 +11,7 @@
 - Bootstrap
 > ### Back-End:
 -  Django 
--  Mysql
+-  SqLite
 
 ## The website has the following specification -
   Start with a dummy data for upto 10 customers.
