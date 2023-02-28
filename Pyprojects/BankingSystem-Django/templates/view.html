@@ -1,0 +1,73 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Transaction {% endblock title %} {% block body %}
+<img src="/static/img/c5.png" width="550" height="550" align="right">
+<section class="content" style="
+    margin-top: 10%;
+    margin-left: 5%;
+    width: 600px;
+    height: 500px;
+    border: 2px solid black;
+    ">
+    <div class="card">
+        <div class="text-center" style="
+            background-color: #05C598;
+            margin: 1%;
+            height: 150px;
+            padding: 20px;  ">
+            <h1><strong>WELCOME!</strong></h1>
+            <h1 class="card-title">{{cust_name.name}}</h1>
+        </div>
+        <div class="text-center" style="
+            margin-top: 0.5%;
+            margin-left:1%;
+            margin-right:1%;
+            height: 200px;
+                ">
+            <h3 class="card-text">Email ID- {{cust_name.email}}</h3>
+            <h3 class="card-text">Account No.- {{cust_name.account_no}}</h3>
+            <h3 class="card-text">IFSC Code- {{cust_name.ifsc_code}}</h3>
+            <h3 class="card-text">Availble Balance- {{cust_name.amount}}</h3>
+        </div>
+        <div class="transfer-content" style="
+            margin: 1%;
+            margin-left: 3%;
+            font:larger;
+            width:100%;
+            height: 100%;
+            ">
+            <form method="POST" action="/transaction">
+                {% csrf_token %}
+                <div class="form-group text-center" style="
+                    display:inline-block;
+                    width: 45%;
+                    height: 100%;
+                    background: #05C598;
+                    margin: 1%;">
+                    <label class="text-center"><strong>Transfer To:</strong></label>
+                    <select name="to" class="form-control">
+                        {% for details in all_details %}
+                        <option>{{details.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group text-center" style="display:inline-block;
+                    width: 45%;
+                    height: 100%;
+                    background: #05C598;
+                    margin: 1%;">
+                    <label><strong>Amount</strong></label>
+                    <input type="number" class="form-control" name="amount2"></input>
+                </div>
+                <div class="box text-center" style="
+                    display:inline-block;
+                    width: calc(100% - 100px);
+                    height: 100%;
+                    background-color: none;
+                    ">
+                    <button type="submit" name="submit" class="btn btn-outline-success btn-sm position-center" value="{{cust_name.name}}">Transfer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock body %}

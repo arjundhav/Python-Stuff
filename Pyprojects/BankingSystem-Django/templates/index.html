@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+<style>
+.container{
+    background-color: #FF4136;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+<div class="container" style="
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    left: 25%;
+    top: 55%;
+    transform: translate(-50%, -50%);">
+
+    <div class="box" style="
+        width: 400px;
+
+        height: 400px;
+        position: absolute;
+        left: 60%;
+        top: 21%;
+        bottom: 15%;
+        right: 12%;">
+
+          <div class="text-center">
+              <h3 style="font-size: 60px; padding: 5px; font-weight: bold;">Welcome to <strong style="color:#b73cfa;">The MGMs Bank</strong></h3>
+          </div>
+          <div class="box text-center" style="
+              width: 375px;
+              height: 150px;
+              position:absolute;
+              bottom: 3%;
+              ">
+              <a type="button" class="btn btn-dark" href="{% url 'customer_details' %}"><strong>Customers</strong></a>
+            <a type="button" class="btn btn-dark" href="{% url 'customer_details' %}"><strong>Transactions</strong></a>
+
+
+          </div>
+      </div>
+</div>
+{% endblock body %}
