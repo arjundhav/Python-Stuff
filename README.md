@@ -1,6 +1,6 @@
 # Python-stuff
 <h2> Contents </h2>
-  <img align="right" alt="GIF" src="https://github.com/abhisheknaiidu/abhisheknaiidu/blob/master/code.gif?raw=true" width="400" height="320" />
+  <img align="right" alt="GIF" src="https://github.com/abhisheknaiidu/abhisheknaiidu/blob/master/code.gif?raw=true" width="420" height="300" />
 <ul>
     <li> <b> Python Basics (Programming Fundamentals) </b></li>
     <li> <b> Data Structures using Python <span style="color:red;">(In Process) </span></b></li>
